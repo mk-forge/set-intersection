@@ -4,9 +4,9 @@ Console application that computes the intersection of two sets using Shell sort 
 
 ## Tech stack
 
-- Language: C++
-- Build: Makefile
-- Documentation: Doxygen
+- **Language:** C++
+- **Build:** Makefile
+- **Documentation:** Doxygen
 
 ## Usage
 
