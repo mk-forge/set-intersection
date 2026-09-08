@@ -17,12 +17,12 @@ make && .\set_intersection.exe
 
 Custom files:
 ```sh
-.\set_intersection.exe input1.txt input2.txt output.txt
+make && .\set_intersection.exe input1.txt input2.txt output.txt
 ```
 
 Help:
 ```sh
-.\set_intersection.exe --help
+make && .\set_intersection.exe --help
 ```
 
 ## Tests

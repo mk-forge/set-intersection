@@ -9,12 +9,14 @@ std::vector<int> setIntersection(std::vector<int>& setA, std::vector<int>& setB)
     for (size_t i = 0; i < setA.size(); i++) {    
         if (binarySearch(setB, setA[i]) != -1) {
             added = false;
+            
             for (size_t j = 0; j < intersection.size(); j++) {
                 if (setA[i] == intersection[j]) {
                     added = true;
                     break;
                 }
             }
+
             if (!added)
                 intersection.push_back(setA[i]);
         }

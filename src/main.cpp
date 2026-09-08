@@ -48,8 +48,8 @@ void printUsage() {
                  "  output  - path to the output file\n"
                  "\n"
                  "If no arguments are provided, default files are used:\n"
-                 "  input1: SmallSetA.txt\n"
-                 "  input2: SmallSetB.txt\n"
+                 "  input1: data/SmallSetA.txt\n"
+                 "  input2: data/SmallSetB.txt\n"
                  "  output: intersection.txt\n";
 }
 
@@ -66,10 +66,10 @@ int main(int argc, char* argv[]) {
         fileB = argv[2];
         outputFile = argv[3];
     } else {
-        std::cout << "Using default files: SmallSetA.txt, SmallSetB.txt, intersection.txt\n";
+        std::cout << "Using default files: data/SmallSetA.txt, data/SmallSetB.txt, intersection.txt\n";
         std::cout << "Use --help for usage information.\n";
-        fileA = "SmallSetA.txt";
-        fileB = "SmallSetB.txt";
+        fileA = "data/SmallSetA.txt";
+        fileB = "data/SmallSetB.txt";
         outputFile = "intersection.txt";
     }
 
