@@ -1,0 +1,4 @@
+@echo off
+em++ src/main.cpp src/file_io.cpp src/algorithms.cpp src/intersection.cpp -I src -o web/set_intersection.mjs -s WASM=1 -s EXPORT_NAME='EmscrJSR_set_intersection' -s ENVIRONMENT=web -s FILESYSTEM=1 -s MODULARIZE=1 -s EXPORTED_RUNTIME_METHODS=callMain,FS,TTY -s INVOKE_RUN=0 -s EXIT_RUNTIME=1 -s ALLOW_MEMORY_GROWTH=1 --preload-file data --js-library=web/node_modules/xterm-pty/emscripten-pty.js -s ASYNCIFY -O2
+
+em++ tests/test_intersection.cpp src/file_io.cpp src/algorithms.cpp src/intersection.cpp -I src -o web/test_intersection.mjs -s WASM=1 -s EXPORT_NAME='EmscrJSR_test_intersection' -s ENVIRONMENT=web -s FILESYSTEM=1 -s MODULARIZE=1 -s EXPORTED_RUNTIME_METHODS=callMain,FS,TTY -s INVOKE_RUN=0 -s EXIT_RUNTIME=1 -s ALLOW_MEMORY_GROWTH=1 --js-library=web/node_modules/xterm-pty/emscripten-pty.js -s ASYNCIFY -O2

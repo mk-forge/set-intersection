@@ -1,0 +1,27 @@
+{
+  "name": "set-intersection",
+  "version": "1.0.0",
+  "description": "Console application that computes the intersection of two sets using Shell sort and binary search algorithms.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "wrangler deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mk-forge/set-intersection.git"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/mk-forge/set-intersection/issues"
+  },
+  "homepage": "https://github.com/mk-forge/set-intersection#readme",
+  "devDependencies": {
+    "wrangler": "^4.135.0"
+  }
+}
