@@ -1,0 +1,4 @@
+web/docs/** linguist-vendored
+web/set_intersection.js linguist-vendored
+web/set_intersection.mjs linguist-vendored
+web/test_intersection.mjs linguist-vendored
