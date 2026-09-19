@@ -39,7 +39,7 @@ function printPromptNoNewline() {
     terminal.writeln('  Ctrl+Shift+V paste into terminal');
 
     let buffer = '';
-    let commands = ['set_intersection', 'set_intersection --help', 'test', 'doxygen', 'cls', 'clear'];
+    let commands = ['set_intersection', 'test', 'doxygen', 'cls', 'clear'];
 
     printPrompt();
 
@@ -66,7 +66,14 @@ function printPromptNoNewline() {
                 if (suggestion) {
                     buffer = suggestion;
                     terminal.write('\r\x1b[K');
-                    terminal.write('\x1b[38;2;255;62;0m> \x1b[0m');
+                    printPromptNoNewline();
+                    terminal.write(buffer);
+                }
+            } else if (parts[0] == 'set_intersection' && parts.length >= 2) {
+                if ('--help'.startsWith(lastWord)) {
+                    buffer = buffer.slice(0, buffer.length - lastWord.length) + '--help';
+                    terminal.write('\r\x1b[K');
+                    printPromptNoNewline();
                     terminal.write(buffer);
                 }
             }
