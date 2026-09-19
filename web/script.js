@@ -28,6 +28,7 @@ function printPromptNoNewline() {
     terminal.writeln('\x1b[38;2;255;62;0m> Set Intersection\x1b[0m');
     terminal.writeln('');
     terminal.writeln('Available commands:');
+    terminal.writeln('  set_intersection');
     terminal.writeln('  set_intersection <input1> <input2> [output]');
     terminal.writeln('  set_intersection --help');
     terminal.writeln('  test');
