@@ -62,6 +62,7 @@ function printPromptNoNewline() {
 
             if (parts.length == 1) {
                 let suggestion = commands.find(cmd => cmd.startsWith(lastWord));
+
                 if (suggestion) {
                     buffer = suggestion;
                     terminal.write('\r\x1b[K');
