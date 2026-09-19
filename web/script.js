@@ -17,6 +17,10 @@ function printPrompt() {
     terminal.write('\n\x1b[38;2;255;62;0m> \x1b[0m');
 }
 
+function printPromptNoNewline() {
+    terminal.write('\x1b[38;2;255;62;0m> \x1b[0m');
+}
+
 (async () => {
     let initMainModule = (await import('./set_intersection.mjs')).default;
     let mainModule = await initMainModule({ pty: slave, noExitRuntime: true });
@@ -29,9 +33,14 @@ function printPrompt() {
     terminal.writeln('  test');
     terminal.writeln('  doxygen');
     terminal.writeln('  cls / clear');
+    terminal.writeln('');
+    terminal.writeln('Available key shortcuts:');
+    terminal.writeln('  Tab          complete command');
+    terminal.writeln('  Ctrl+Shift+V paste into terminal');
 
     let buffer = '';
-    let completions = ['set_intersection', 'set_intersection --help', 'test', 'doxygen', 'cls', 'clear'];
+    let commands = ['set_intersection', 'set_intersection --help', 'test', 'doxygen', 'cls', 'clear'];
+
     printPrompt();
 
     terminal.attachCustomKeyEventHandler((event) => {
@@ -47,13 +56,20 @@ function printPrompt() {
 
         if (event.key == 'Tab') {
             event.preventDefault();
-            let suggestion = completions.find(command => command.startsWith(buffer));
-            if (suggestion) {
-                buffer = suggestion;
-                terminal.write('\r\x1b[K');
-                terminal.write('\x1b[38;2;255;62;0m> \x1b[0m');
-                terminal.write(buffer);
+
+            let parts = buffer.split(/\s+/);
+            let lastWord = parts[parts.length - 1];
+
+            if (parts.length == 1) {
+                let suggestion = commands.find(cmd => cmd.startsWith(lastWord));
+                if (suggestion) {
+                    buffer = suggestion;
+                    terminal.write('\r\x1b[K');
+                    terminal.write('\x1b[38;2;255;62;0m> \x1b[0m');
+                    terminal.write(buffer);
+                }
             }
+
             return false;
         }
 
@@ -73,10 +89,10 @@ function printPrompt() {
 
                 if (args[0] == 'clear' || args[0] == 'cls') {
                     terminal.clear();
-                    printPrompt();
+                    printPromptNoNewline();
                 } else if (args[0] == 'doxygen') {
                     window.open('/docs/index.html', '_blank');
-                    printPrompt();
+                    printPromptNoNewline();
                 } else if (args[0] == 'test') {
                     runUnitTests();
                 } else if (args[0] == 'set_intersection') {
@@ -106,6 +122,7 @@ function printPrompt() {
     async function runUnitTests() {
         let initTestModule = (await import('./test_intersection.mjs')).default;
         let testModule = await initTestModule({ pty: slave, noExitRuntime: true });
+        
         try {
             testModule.callMain([]);
         } catch (error) {}
