@@ -7,6 +7,7 @@ Console application that computes the intersection of two sets using Shell sort 
 - **Language:** C++
 - **Build:** Makefile
 - **Documentation:** Doxygen
+- **Library:** xterm.js
 - **WebAssembly:** Emscripten SDK
 - **Deploy:** Cloudflare Workers
 
@@ -50,7 +51,7 @@ doxygen Doxyfile
 
 ## Screenshots
 
-![Tests passed](./Screenshots/tests.png)
-![Help message](./Screenshots/help.png)
-![Custom files](./Screenshots/custom.png)
-![Default run](./Screenshots/default.png)
+![Tests passed](https://raw.githubusercontent.com/mk-forge/set-intersection/main/Screenshots/tests.png)
+![Help message](https://raw.githubusercontent.com/mk-forge/set-intersection/main/Screenshots/help.png)
+![Custom files](https://raw.githubusercontent.com/mk-forge/set-intersection/main/Screenshots/custom.png)
+![Default run](https://raw.githubusercontent.com/mk-forge/set-intersection/main/Screenshots/default.png)
