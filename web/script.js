@@ -14,18 +14,18 @@ let { master, slave } = openpty();
 terminal.loadAddon(master);
 
 function printPrompt() {
-    terminal.write('\n\x1b[38;2;255;62;0m> \x1b[0m');
+    terminal.write('\n\x1b[38;2;167;139;250m> \x1b[0m');
 }
 
 function printPromptNoNewline() {
-    terminal.write('\x1b[38;2;255;62;0m> \x1b[0m');
+    terminal.write('\x1b[38;2;167;139;250m> \x1b[0m');
 }
 
 (async () => {
     let initMainModule = (await import('./set_intersection.mjs')).default;
     let mainModule = await initMainModule({ pty: slave, noExitRuntime: true });
 
-    terminal.writeln('\x1b[38;2;255;62;0m> Set Intersection\x1b[0m');
+    terminal.writeln('\x1b[38;2;167;139;250m> Set Intersection\x1b[0m');
     terminal.writeln('');
     terminal.writeln('Available commands:');
     terminal.writeln('  set_intersection');
