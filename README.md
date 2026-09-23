@@ -13,7 +13,7 @@ Console application that computes the intersection of two sets using Shell sort 
 
 ## Website
 
-[Demo](https://set-intersection.mk-forge.workers.dev)
+[Set Intersection](https://set-intersection.mk-forge.workers.dev)
 
 ## Features
 
