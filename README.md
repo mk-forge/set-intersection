@@ -1,5 +1,10 @@
 # Set Intersection
 
+![C%2B%2B](https://img.shields.io/badge/C%2B%2B-00599C?logo=cplusplus&logoColor=white)
+![WebAssembly](https://img.shields.io/badge/WebAssembly-654FF0?logo=webassembly&logoColor=white)
+![Emscripten](https://img.shields.io/badge/Emscripten-000000?logo=emscripten&logoColor=white)
+![Cloudflare](https://img.shields.io/badge/Cloudflare-F38020?logo=cloudflare&logoColor=white)
+
 Console application that computes the intersection of two sets using Shell sort and binary search algorithms.
 
 ## Tech stack
@@ -55,3 +60,7 @@ doxygen Doxyfile
 ![Help message](https://raw.githubusercontent.com/mk-forge/set-intersection/main/Screenshots/help.png)
 ![Custom files](https://raw.githubusercontent.com/mk-forge/set-intersection/main/Screenshots/custom.png)
 ![Default run](https://raw.githubusercontent.com/mk-forge/set-intersection/main/Screenshots/default.png)
+
+## License
+
+[MIT](LICENSE)
