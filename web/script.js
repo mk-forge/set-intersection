@@ -8,7 +8,13 @@ let terminal = new Terminal({
     }
 });
 
+let fitAddon = new FitAddon.FitAddon();
+terminal.loadAddon(fitAddon);
+
 terminal.open(document.getElementById('terminal'));
+fitAddon.fit();
+
+window.addEventListener('resize', () => fitAddon.fit());
 
 let { master, slave } = openpty();
 terminal.loadAddon(master);
@@ -27,7 +33,7 @@ function printPromptNoNewline() {
 
     terminal.writeln('\x1b[38;2;167;139;250m> Set Intersection\x1b[0m');
     terminal.writeln('');
-    terminal.writeln('Available commands:');
+    terminal.writeln('\x1b[38;2;167;139;250mAvailable commands:\x1b[0m');
     terminal.writeln('  set_intersection');
     terminal.writeln('  set_intersection <input1> <input2> [output]');
     terminal.writeln('  set_intersection --help');
@@ -35,9 +41,9 @@ function printPromptNoNewline() {
     terminal.writeln('  doxygen');
     terminal.writeln('  cls / clear');
     terminal.writeln('');
-    terminal.writeln('Available key shortcuts:');
-    terminal.writeln('  Tab          complete command');
-    terminal.writeln('  Ctrl+Shift+V paste into terminal');
+    terminal.writeln('\x1b[38;2;167;139;250mAvailable key shortcuts:\x1b[0m');
+    terminal.writeln('  Tab                complete command');
+    terminal.writeln('  Ctrl + Shift + V   paste into terminal');
 
     let buffer = '';
     let commands = ['set_intersection', 'test', 'doxygen', 'cls', 'clear'];
@@ -122,7 +128,7 @@ function printPromptNoNewline() {
                 if (buffer.length > 0)
                     buffer = buffer.slice(0, -1);
             } else if (char >= ' ' && char <= '~') {
-                if (buffer.length < 256)
+                if (buffer.length < terminal.cols - 2)
                     buffer += char;
             }
         }
