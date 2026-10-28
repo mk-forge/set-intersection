@@ -48,6 +48,12 @@ function printPromptNoNewline() {
     let buffer = '';
     let commands = ['set_intersection', 'test', 'doxygen', 'cls', 'clear'];
 
+    function redrawLine() {
+        terminal.write('\r\x1b[K');
+        printPromptNoNewline();
+        terminal.write(buffer);
+    }
+
     printPrompt();
 
     terminal.attachCustomKeyEventHandler((event) => {
@@ -72,16 +78,12 @@ function printPromptNoNewline() {
 
                 if (suggestion) {
                     buffer = suggestion;
-                    terminal.write('\r\x1b[K');
-                    printPromptNoNewline();
-                    terminal.write(buffer);
+                    redrawLine();
                 }
             } else if (parts[0] == 'set_intersection' && parts.length >= 2) {
                 if ('--help'.startsWith(lastWord)) {
                     buffer = buffer.slice(0, buffer.length - lastWord.length) + '--help';
-                    terminal.write('\r\x1b[K');
-                    printPromptNoNewline();
-                    terminal.write(buffer);
+                    redrawLine();
                 }
             }
 
@@ -125,8 +127,10 @@ function printPromptNoNewline() {
                     printPrompt();
                 }
             } else if (char == '\u007F' || char == '\b') {
-                if (buffer.length > 0)
+                if (buffer.length > 0) {
                     buffer = buffer.slice(0, -1);
+                    redrawLine();
+                }
             } else if (char >= ' ' && char <= '~') {
                 if (buffer.length < terminal.cols - 2)
                     buffer += char;
