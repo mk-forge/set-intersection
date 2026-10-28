@@ -29,6 +29,11 @@ body {
   box-sizing: border-box;
 }
 
+#terminal .xterm {
+  padding-right: 16px;
+  box-sizing: border-box;
+}
+
 .xterm {
   padding: 0;
   height: 100%;
