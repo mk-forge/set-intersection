@@ -19,13 +19,21 @@ let server = http.createServer((req, res) => {
     let filePath = path.join(__dirname, req.url == '/' ? 'index.html' : req.url);
     let ext = path.extname(filePath);
 
+    let cacheControl;
+    if (req.url.startsWith('/docs/'))
+        cacheControl = 'public, max-age=31536000, immutable';
+    else if (ext == '.html')
+        cacheControl = 'no-cache';
+    else
+        cacheControl = 'public, max-age=31536000, immutable';
+
     fs.readFile(filePath, (error, data) => {
         if (error) {
             res.writeHead(404);
             res.end('Not found');
             return;
         }
-        res.writeHead(200, { 'Content-Type': mimeTypes[ext] || 'application/octet-stream' });
+        res.writeHead(200, { 'Content-Type': mimeTypes[ext] || 'application/octet-stream', 'Cache-Control': cacheControl });
         res.end(data);
     });
 });
