@@ -15,7 +15,7 @@ Console application that computes the intersection of two sets using Shell sort 
 - **Build:** Makefile
 - **Documentation:** Doxygen
 - **Library:** xterm.js
-- **WebAssembly:** Emscripten SDK
+- **Web:** WebAssembly, Emscripten
 - **Assets:** esbuild
 - **Deploy:** Cloudflare Workers
 
